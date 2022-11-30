@@ -1,9 +1,10 @@
-import { escape } from '../decorators/escape.js';
+import { escapar } from '../decorators/escapar.js';
 import { Negociacoes } from '../models/negociacoes.js';
 import { View } from './view.js';
 
 export class NegociacoesView extends View<Negociacoes> {
-    @escape
+
+    @escapar
     protected template(model: Negociacoes): string {
         return `
         <table class="table table-hover table-bordered">
@@ -16,7 +17,7 @@ export class NegociacoesView extends View<Negociacoes> {
             </thead>
             <tbody>
                 ${model.lista().map(negociacao => {
-            return `
+                    return `
                         <tr>
                             <td>${this.formatar(negociacao.data)}
                             </td>
@@ -28,7 +29,7 @@ export class NegociacoesView extends View<Negociacoes> {
                             </td>
                         </tr>
                     `;
-        }).join('')}
+                }).join('')}
             </tbody>
         </table>
         `;
